@@ -1,0 +1,23 @@
+{
+  "name": "multer",
+  "version": "1.0.0",
+  "description": "file uploading and storing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaadNiaziDev/Multer.git"
+  },
+  "author": "Saad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaadNiaziDev/Multer/issues"
+  },
+  "homepage": "https://github.com/SaadNiaziDev/Multer#readme",
+  "dependencies": {
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15"
+  }
+}
