@@ -12,14 +12,23 @@ const storage = multer.diskStorage({
 })
 
 //init storage
-
+//single file to store
 const upload = multer ({
     storage : storage,
-    limits:{fileSize:100*1000*1000},
+    limits:{fileSize:10*1000*1000},
     fileFilter: function (req,file,cd){
         checkFileExtension(file,cd);
     }
 }).single('1234');
+
+//multiple file storage
+const uploads = multer ({
+    storage : storage,
+    limits:{fileSize:200*1000*1000},
+    fileFilter: function (req,file,cd){
+        checkFileExtension(file,cd);
+    }
+}).array('Bcsf18a',10);
 
 
 //file extension checking
@@ -49,6 +58,7 @@ app.get('/', (req, res) => {
     res.send("hey");
 })
 
+//single file method
 app.post('/uploads', (req, res) => {
         upload(req, res, (err) => {
             if (err) {
@@ -59,7 +69,21 @@ app.post('/uploads', (req, res) => {
                 res.send('file uploaded successfully');
             }
         });
-    })
+})
+
+
+//multiple file uploading method
+app.post('/multiple', (req, res) => {
+    uploads(req, res, (err) => {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            console.log(req.file);
+            res.send('file uploaded successfully');
+        }
+    });
+})
 
 app.listen(3000);
 
